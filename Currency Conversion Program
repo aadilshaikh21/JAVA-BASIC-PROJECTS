@@ -1,0 +1,74 @@
+import java.util.Scanner;
+public class CurrencyConv {
+    public static void main (String[]args){
+        //calling
+        mainfunction();
+    }
+
+        public static void mainfunction(){
+            int currency;
+            double amt;
+            Scanner sc = new Scanner(System.in);
+            Scanner input = new Scanner(System.in);
+            System.out.print("Enter Amount in INR: ");
+            amt = input.nextInt();
+            System.out.println("Please Select Conversion Currency: ");
+            System.out.println("1. Dollar"+" "+"2. Euro"+ " " + "3. Riyal");
+            currency = sc.nextInt();
+            switch(currency){
+                case 1: ConvertINRtoDollar(amt);
+                    break;
+                case 2: ConvertINRtoEuro(amt);
+                    break;
+                case 3: ConvertINRtoRiyal(amt);
+                    break;
+                default: 
+                    System.out.println("Wrong Option Selected - Please Select Again");
+                    mainfunction();
+            }
+        sc.close();
+        input.close();
+
+        }
+
+        public static void ConvertINRtoDollar(double amt){
+            double usd;
+            double xchg = 0.012058593d;
+            usd = amt * xchg;
+            System.out.println("INR "+amt+" = "+"USD "+usd);
+            exitMethod();
+        }
+
+        public static void ConvertINRtoEuro(double amt){
+            double euro;
+            double xchg = 0.010976528d;
+            euro = amt * xchg;
+            System.out.println("INR "+amt+" = "+"EURO "+ euro);
+            exitMethod();
+        }
+
+        public static void ConvertINRtoRiyal(double amt){
+            double riyal;
+            double xchg = 0.045219723d;
+            riyal = amt * xchg;
+            System.out.println("INR "+amt+" = "+"RIYAL "+riyal);
+            exitMethod();
+        }
+        public static void exitMethod(){
+            Scanner xx = new Scanner(System.in);
+            System.out.println("Please Select: \n1.Exit 2. Continue");
+            String response = xx.nextLine();
+            switch (response.toUpperCase()){
+                case "EXIT":
+                    System.out.print("Thanks!"+" -Program Ended- ");
+                    break;
+                case "CONTINUE": 
+                    mainfunction();
+                    break;
+                default: 
+                    System.out.println("Invalid Input - Please Select Again: ");
+                    exitMethod();
+            }
+        }
+
+    }
